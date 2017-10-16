@@ -7,16 +7,17 @@
         <!-- Top content -->
         <div class="top-content" id="top-part">
         	
-            <div class="inner-bg">
+            <div class="inner-bg" >
                 <div class="container">
                     
                     <div class="row">
-                        <div class="col-sm-5">
+                        <div class="col-sm-5" id="loginModule">
                         	
                         	<div class="form-box">
 	                        	<div class="form-top">
 	                        		<div class="form-top-left">
 	                        			<h3>Login </h3>
+	                        			<h3><a id="registerHereId">Register Here!!!</a></h3>
 	                        		</div>
 	                        		<div class="form-top-right">
 	                        			<i class="fa fa-key"></i>
@@ -41,15 +42,14 @@
 	                        
                         </div>
                         
-                        <div class="col-sm-1 middle-border"></div>
-                        <div class="col-sm-1"></div>
-                        	
-                        <div class="col-sm-5">
+                                            	
+                        <div class="col-sm-5" id="registerModule">
                         	
                         	<div class="form-box">
                         		<div class="form-top">
 	                        		<div class="form-top-left">
 	                        			<h3>Sign up now</h3>
+	                        			<h3><a id="loginId">Go Back to Login!!!</a></h3>
 	                        		</div>
 	                        		<div class="form-top-right">
 	                        			<i class="fa fa-pencil"></i>
@@ -82,17 +82,26 @@
             </div>
             
         </div>
-    <style type="text/css">
+ <!--    <style type="text/css">
     	#top-part{
       background: url(img/1.jpg) no-repeat  ;
 	}
-    </style>
+    </style> -->
     <script type="text/javascript">
-    	
-    	$('.login-form input[type="text"], .login-form input[type="password"], .login-form textarea').on('focus', function() {
+    	$('.modal-dialog').css('background-image', 'url("img/1.jpg")');
+    $('.login-form input[type="text"], .login-form input[type="password"], .login-form textarea').on('focus', function() {
     	$(this).removeClass('input-error');
     });
-    
+    $("#registerHereId").click(function() {
+    	
+    	$("#registerModule").toggle();
+    	$("#loginModule").toggle();
+	});
+	$("#loginId").click(function() {
+    	
+    	$("#registerModule").toggle();
+    	$("#loginModule").toggle();
+	});
     $('.login-form').on('submit', function(e) {
     	
     	$(this).find('input[type="text"], input[type="password"], textarea').each(function(){
@@ -106,7 +115,7 @@
     	});
     	
     });
-    
+    $('#registerModule').hide();
     /*
         Registration form validation
     */
