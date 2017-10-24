@@ -13,66 +13,35 @@ function loaded() {
 function login()
    {
    	if(document.getElementById("userName")!=null){
-    var userName = document.getElementById("userName");
+    	var userName = document.getElementById("userName").value;
 	}else if(document.getElementById("userName")!=null){
-		var userName = document.getElementById("userNameId");
+		var userName = document.getElementById("userNameId").value;
 	}
-	var password = document.getElementById("pass");
+	var password = document.getElementById("password");
     
-    var jsonToBeSend=new Object();
-    jsonToBeSend["user"] = userName.value;
-    jsonToBeSend["pass"] = password.value;
+    
    	var headerBackBtn=defaultPagePath+'categoryMsgPage.html';
 	var pageRef=defaultPagePath+'category.html';
-    //urlPath=window.localStorage.getItem("urlPath");
-	 setUrlPathLocalStorage(urlPath);
-	j('#loading').show();
-    j.ajax({
-         url: urlPath+"LoginWebService",
-         type: 'POST',
-         dataType: 'json',
-         crossDomain: true,
-         data: JSON.stringify(jsonToBeSend),
-         success: function(data) {
-         	if (data.Status == 'Success'){
-        	 j('#mainHeader').load(headerBackBtn);
-             j('#mainContainer').load(pageRef);
-              appPageHistory.push(pageRef);
-			  //addEmployeeDetails(data);
-                 
-			  setUserStatusInLocalStorage("Valid");
-			  setUserSessionDetails(data,jsonToBeSend);
-                           
-                if(data.hasOwnProperty('EaInMobile') && 
-                 data.EaInMobile != null){
-                  if(data.EaInMobile){
-                 synchronizeEAMasterData();
-                  }
-               }
-            
-			  if(data.TrRole){
-				synchronizeTRMasterData();
-				synchronizeTRForTS();  
-			  }
-                synchronizeBEMasterData();
-			}else if(data.Status == 'Failure'){
- 			   successMessage = data.Message;
-			   if(successMessage.length == 0){
-					successMessage = "Wrong UserName or Password";
-				}
-				document.getElementById("loginErrorMsg").innerHTML = successMessage;
- 			   j('#loginErrorMsg').hide().fadeIn('slow').delay(2000).fadeOut('slow');
- 			   j('#loading').hide();
-           }else{
-			    j('#loading').hide();
-             alert("Please enter correct username or password");
-           }
 
-         },
-         error:function(data) {
-		   j('#loading').hide();
-         }
-   });
+	j('#loading').show();
+   if(userName == 'yashashreezope'){
+   		alert("Hello Dr. yashashree Zope. \n  Welcome to Your Physiotheropy App");
+   		j(document).ready(function() {
+				j('#mainHeader').load(headerBackBtn);
+				j('#mainContainer').load(pageRef);
+			});
+      appPageHistory.push(pageRef);
+   }else if(userName == 'gauravzope'){
+		alert("Hello Mr. Gaurav Zope. \n  Welcome to Your Physiotheropy App");
+		j(document).ready(function() {
+				j('#mainHeader').load(headerBackBtn);
+				j('#mainContainer').load(pageRef);
+			});
+      appPageHistory.push(pageRef);
+   }else{
+   		alert("Please follow registration process for new enrollment");
+   }
+
 
  }
  
