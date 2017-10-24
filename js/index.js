@@ -19,24 +19,19 @@ function login()
 	}
 	var password = document.getElementById("password");
     
-    
    	var headerBackBtn=defaultPagePath+'categoryMsgPage.html';
 	var pageRef=defaultPagePath+'category.html';
 
 	j('#loading').show();
    if(userName == 'yashashreezope'){
    		alert("Hello Dr. yashashree Zope. \n  Welcome to Your Physiotheropy App");
-   		j(document).ready(function() {
 				j('#mainHeader').load(headerBackBtn);
 				j('#mainContainer').load(pageRef);
-			});
       appPageHistory.push(pageRef);
    }else if(userName == 'gauravzope'){
 		alert("Hello Mr. Gaurav Zope. \n  Welcome to Your Physiotheropy App");
-		j(document).ready(function() {
 				j('#mainHeader').load(headerBackBtn);
 				j('#mainContainer').load(pageRef);
-			});
       appPageHistory.push(pageRef);
    }else{
    		alert("Please follow registration process for new enrollment");
