@@ -194,7 +194,7 @@
 #mainContainer {
     float: left;
     overflow-x: hidden;
-    padding: 12% 6% 12%;
+    align : center;
     width: 100%;
 }
 .selected {
