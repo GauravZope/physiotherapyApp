@@ -78,8 +78,9 @@
 <script>
 app.initialize();
     $("#menu-toggle").click(function(e) {
+    	j('#defaultOpen').css('background-color', '#33cccc');
         e.preventDefault();
-        $("#wrapper").toggleClass("toggled");
+        j("#wrapper").toggleClass("toggled");
     });
 
 </script>
