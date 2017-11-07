@@ -44,79 +44,7 @@ var app = {
 		  }
 };
 
-function goBack() {
-	var currentUser=getUserID();
-	
-	var loginPath=defaultPagePath+'loginPage.html';
-	var headerBackBtn=defaultPagePath+'backbtnPage.html';
-	var headerCatMsg=defaultPagePath+'categoryMsgPage.html';
-	
-	if(currentUser==''){
-		j('#mainContainer').load(loginPath);
-	}else{
-		//To check if the page that needs to be displayed is login page. So 'historylength-2'
-		var historylength=appPageHistory.length;
-		var goToPage=appPageHistory[historylength-2];
 
-		if(goToPage!==null && goToPage==loginPath){
-			return 0;
-		}else{
-			appPageHistory.pop();
-			var len=appPageHistory.length;
-			var pg=appPageHistory[len-1];
-			if(pg=="app/pages/addAnExpense.html" 
-				|| pg=="app/pages/addTravelSettlement.html"){
-				
-				j('#mainHeader').load(headerBackBtn);
-			}else if(pg=="app/pages/category.html"){
-				
-				j('#mainHeader').load(headerCatMsg);
-			}
-			if(!(pg==null)){ 
-				j('#mainContainer').load(pg);
-			}
-		}
-	}
-	}
- 
-function goBackEvent() {
-	var currentUser=getUserID();
-	var loginPath=defaultPagePath+'loginPage.html';
-	var headerBackBtn=defaultPagePath+'backbtnPage.html';
-	var headerCatMsg=defaultPagePath+'categoryMsgPage.html';
-	
-	if(currentUser==''){
-		j('#mainContainer').load(loginPath);
-	}else{
-		//To check if the page that needs to be displayed is login page. So 'historylength-2'
-		var historylength=appPageHistory.length;
-		var goToPage=appPageHistory[historylength-2];
-
-		if(goToPage!==null && goToPage==loginPath){
-			return 0;
-		}else{
-			appPageHistory.pop();
-			var len=appPageHistory.length;
-			if(len == 0){
-				navigator.app.exitApp();
-				//navigator.notification.confirm("Are you sure want to exit from App?", onConfirmExit, "Confirmation", "Yes,No");
-			}else{
-				var pg=appPageHistory[len-1];
-				if(pg=="app/pages/addAnExpense.html"){ 
-					
-					j('#mainHeader').load(headerBackBtn);
-				}else if(pg=="app/pages/category.html"){
-					
-					j('#mainHeader').load(headerCatMsg);
-					forceCloseDropdown();
-				}
-				if(!(pg==null)){ 
-					j('#mainContainer').load(pg);
-				}
-			}
-		}
-	}
-}
 
 function onConfirmExit(button) {
     if (button == 2) { //If User select a No, then return back;
