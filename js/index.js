@@ -40,9 +40,13 @@ function login()
 
 
  }
- 
+  function goBack() {
+  	alert("1")
+  }
 
-
+ function openSideMenu() {
+  	alert("123")
+  }
   
 
  function init() {
@@ -61,6 +65,7 @@ function login()
 		headerBackBtn=defaultPagePath+'welcomePage.html';
 		pgRef=defaultPagePath+'loginPage.html';
 	}
+
 	
 	j(document).ready(function() {
 		j('#mainHeader').load(headerBackBtn);

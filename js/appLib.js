@@ -26,22 +26,17 @@ var app = {
     },
 	
 	onDeviceReady: function() {
-       		  if (navigator.notification) { // Override default HTML alert with native dialog
-			  window.alert = function (message) {
-				  navigator.notification.alert(
-					  message,   	 // message
-					  null,       	// callback
-					  "Alert", 	   // title
-					  'OK'        // buttonName
-				  );
-			  };
-		  }
-		  document.addEventListener("backbutton", function(e){
-			 goBackEvent();
-		  }, false);
-		  validateValidMobileUser();
-		  
-		  }
+   		  if (navigator.notification) { // Override default HTML alert with native dialog
+		  window.alert = function (message) {
+			  navigator.notification.alert(
+				  message,   	 // message
+				  null,       	// callback
+				  "Alert", 	   // title
+				  'OK'        // buttonName
+			  );
+		  };
+	 	}
+	}
 };
 
 
@@ -60,7 +55,7 @@ function onConfirmExit(button) {
 if (window.openDatabase) {
 	
 	//Create the database the parameters are 1. the database name 2.version number 3. a description 4. the size of the database (in bytes) 1024 x 1024 = 1MB
-    var mydb = openDatabase("Expenzing", "0.1", "Expenzing", 1024 * 1024);
+    var mydb = openDatabase("physiotherapyApp", "0.1", "physiotherapyApp", 1024 * 1024);
 	//create All tables using SQL for the database using a transaction
 	mydb.transaction(function (t) {
 		//t.executeSql("CREATE TABLE IF NOT EXISTS employeeDetails (id INTEGER PRIMARY KEY ASC, firstName TEXT, lastName TEXT, gradeId INTEGER, budgetingStatus CHAR(1),unitId INTEGER, status TEXT)");
