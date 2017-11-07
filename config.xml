@@ -1,12 +1,12 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="com.phonegap.physiotherapyApp" version="1.4.5" android-versionCode="93" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
 <!--widget id="com.physiotherapyApp1.physiotherapyApp1" version="1.1.1" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0"-->
-    <name>physiotherapyApp</name>
+    <name>PhysioCare</name>
     <description>
-        physiotherapy Application
+        PhysioCare Application
     </description>
-    <author email="tech@physiotherapyApp.com" href="http://www.physiotherapyApp.com">
-        Team physiotherapyApp
+    <author email="PhysioCare@gmail.com" >
+        Team PhysioCare
     </author> 
     <content src="index.html" />
     <preference name="permissions" value="none" />
@@ -26,34 +26,22 @@
     <preference name="android-maxSdkVersion" value="24" />
     <preference name="android-installLocation" value="auto" />
     <feature name="http://api.phonegap.com/1.0/device" />
-    <!-- <feature name="http://api.phonegap.com/1.0/camera"/> -->
     <feature name="http://api.phonegap.com/1.0/file"/>
     <feature name="http://api.phonegap.com/1.0/media"/>
     <feature name="http://api.phonegap.com/1.0/network"/>
     
     <gap:plugin name="cordova-plugin-battery-status" source="npm" />
-    <gap:plugin name="cordova-plugin-camera" source="npm" />
-    <plugin name="cordova-plugin-media-capture" source="npm" spec="*">
-        <variable name="CAMERA_USAGE_DESCRIPTION" value="App would like to access the camera." />
-        <variable name="MICROPHONE_USAGE_DESCRIPTION" value="App would like to access the microphone." />
-        <variable name="PHOTOLIBRARY_USAGE_DESCRIPTION" value="App would like to access the library." />
-    </plugin>
     <gap:plugin name="cordova-plugin-console" source="npm" />
-    <gap:plugin name="cordova-plugin-contacts" source="npm" />
     <gap:plugin name="cordova-plugin-device" source="npm" />
     <gap:plugin name="cordova-plugin-device-motion" source="npm" />
     <gap:plugin name="cordova-plugin-device-orientation" source="npm" />
     <gap:plugin name="cordova-plugin-dialogs" source="npm" />
-    <gap:plugin name="cordova-plugin-file" source="npm" />
-    <gap:plugin name="cordova-plugin-file-transfer" source="npm" />
-    <gap:plugin name="cordova-plugin-geolocation" source="npm" />
     <gap:plugin name="cordova-plugin-globalization" source="npm" />
     <gap:plugin name="cordova-plugin-inappbrowser" source="npm" />
     <gap:plugin name="cordova-plugin-media" source="npm" />
     <gap:plugin name="cordova-plugin-network-information" source="npm" />
     <gap:plugin name="cordova-plugin-splashscreen" source="npm" />
     <gap:plugin name="cordova-plugin-vibration" source="npm" />
-    <gap:plugin name="cordova-plugin-imagepicker" source="npm"/>
 
 	
     <icon src="icon.png" />
