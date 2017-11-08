@@ -42,7 +42,7 @@
     <gap:plugin name="cordova-plugin-network-information" source="npm" />
     <gap:plugin name="cordova-plugin-splashscreen" source="npm" />
     <gap:plugin name="cordova-plugin-vibration" source="npm" />
-
+ <gap:plugin name="remcob00-cordova-youtube-android-player-api" source="npm" />
 	
     <icon src="icon.png" />
     <icon gap:platform="android" gap:qualifier="ldpi" src="www/res/icon/android/icon-36-ldpi.png" />
