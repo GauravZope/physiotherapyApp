@@ -25,6 +25,7 @@
     <preference name="android-minSdkVersion" value="14" />
     <preference name="android-maxSdkVersion" value="24" />
     <preference name="android-installLocation" value="auto" />
+    <preference name="YouTubeDataApiKey" value="AIzaSyDCZH4mBXtCxPjblI5PxEgyZ22rlwBLDu0" />
     <feature name="http://api.phonegap.com/1.0/device" />
     <feature name="http://api.phonegap.com/1.0/file"/>
     <feature name="http://api.phonegap.com/1.0/media"/>
@@ -43,7 +44,7 @@
     <gap:plugin name="cordova-plugin-splashscreen" source="npm" />
     <gap:plugin name="cordova-plugin-vibration" source="npm" />
  <gap:plugin name="cordova-plugin-youtube-video-player" source="npm" />
- 
+
 	
     <icon src="icon.png" />
     <icon gap:platform="android" gap:qualifier="ldpi" src="www/res/icon/android/icon-36-ldpi.png" />
