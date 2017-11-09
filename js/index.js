@@ -20,8 +20,7 @@ function login()
 	}
 	var password = document.getElementById("password");
     
-   	var headerBackBtn=defaultPagePath+'categoryMsgPage.html';
-	var pageRef=defaultPagePath+'category.html';
+	var pageRef=defaultPagePath+'homePage.html';
 
 	j('#loading').show();
    if(userName == 'yashashreezope'){

@@ -1,16 +1,5 @@
 var appPageHistory=[];
-var jsonToBeSend=new Object();
-var jsonBEArr = [];
-var budgetingStatus;
-var gradeId;
-var unitId;
-var employeeId;
-var empFirstName;
-var successSyncStatusBE =false;
-var successSyncStatusTR =false;
 
-var successMsgForCurrency = "Currency synchronized successfully.";
-var errorMsgForCurrency = "Currency not synchronized successfully.";
 
 var app = {
     // Application Constructor
@@ -39,16 +28,6 @@ var app = {
 	}
 };
 
-
-
-function onConfirmExit(button) {
-    if (button == 2) { //If User select a No, then return back;
-        return;
-    } else {
-        navigator.app.exitApp(); // If user select a Yes, quit from the app.
-    }
-}
-
   //Local Database Create,Save,Display
 
   //Test for browser compatibility
@@ -58,25 +37,11 @@ if (window.openDatabase) {
     var mydb = openDatabase("physiotherapyApp", "0.1", "physiotherapyApp", 1024 * 1024);
 	//create All tables using SQL for the database using a transaction
 	mydb.transaction(function (t) {
-		//t.executeSql("CREATE TABLE IF NOT EXISTS employeeDetails (id INTEGER PRIMARY KEY ASC, firstName TEXT, lastName TEXT, gradeId INTEGER, budgetingStatus CHAR(1),unitId INTEGER, status TEXT)");
-		t.executeSql("CREATE TABLE IF NOT EXISTS currencyMst (currencyId INTEGER PRIMARY KEY ASC, currencyName TEXT)");
-		t.executeSql("CREATE TABLE IF NOT EXISTS accountHeadMst (accountHeadId INTEGER PRIMARY KEY ASC, accHeadName TEXT)");
-        t.executeSql("CREATE TABLE IF NOT EXISTS locationMst (locationId INTEGER PRIMARY KEY ASC, locationName TEXT)");
-		t.executeSql("CREATE TABLE IF NOT EXISTS expNameMst (id INTEGER PRIMARY KEY ASC,expNameMstId INTEGER, expName TEXT, expIsFromToReq CHAR(1), accCodeId INTEGER NOT NULL, accHeadId INTEGER NOT NULL, expIsUnitReq CHAR(1), expRatePerUnit Double, expFixedOrVariable CHAR(1), expFixedLimitAmt Double,expPerUnitActiveInative CHAR(1),isErReqd CHAR(1),limitAmountForER Double)");
-		t.executeSql("CREATE TABLE IF NOT EXISTS businessExpDetails (busExpId INTEGER PRIMARY KEY ASC, accHeadId INTEGER REFERENCES accountHeadMst(accHeadId), expNameId INTEGER REFERENCES expNameMst(expNameId),expDate DATE, expFromLoc TEXT, expToLoc TEXT, expNarration TEXT, expUnit INTEGER, expAmt Double, currencyId INTEGER REFERENCES currencyMst(currencyId),isEntitlementExceeded TEXT,busExpAttachment BLOB,wayPointunitValue TEXT,locationId  INTEGER REFERENCES locationMst(locationId))");
-		t.executeSql("CREATE TABLE IF NOT EXISTS walletMst (walletId INTEGER PRIMARY KEY ASC AUTOINCREMENT, walletAttachment BLOB)");
-		t.executeSql("CREATE TABLE IF NOT EXISTS travelModeMst (travelModeId INTEGER PRIMARY KEY ASC, travelModeName TEXT)");
-		t.executeSql("CREATE TABLE IF NOT EXISTS travelCategoryMst (travelCategoryId INTEGER PRIMARY KEY ASC, travelCategoryName TEXT,travelModeId INTEGER)");
-		t.executeSql("CREATE TABLE IF NOT EXISTS cityTownMst (cityTownId INTEGER PRIMARY KEY ASC, cityTownName TEXT)");
-		t.executeSql("CREATE TABLE IF NOT EXISTS travelTypeMst (travelTypeId INTEGER PRIMARY KEY ASC, travelTypeName TEXT)");
-		t.executeSql("CREATE TABLE IF NOT EXISTS travelAccountHeadMst (id INTEGER PRIMARY KEY ASC,accHeadId INTEGER, accHeadName TEXT, processId INTEGER)");
-		t.executeSql("CREATE TABLE IF NOT EXISTS travelExpenseNameMst (id INTEGER PRIMARY KEY ASC,expenseNameId INTEGER, expenseName TEXT, isModeCategory char(1),accountCodeId INTEGER,accHeadId INTEGER REFERENCES travelAccountHeadMst(accHeadId))");
-		t.executeSql("CREATE TABLE IF NOT EXISTS travelSettleExpDetails (tsExpId INTEGER PRIMARY KEY ASC,travelRequestId INTEGER, accHeadId INTEGER REFERENCES travelAccountHeadMst(accHeadId), expNameId INTEGER REFERENCES travelExpenseNameMst(expenseNameId),expDate DATE,expNarration TEXT, expUnit INTEGER, expAmt Double, currencyId INTEGER REFERENCES currencyMst(currencyId),travelModeId INTEGER REFERENCES travelModeMst(travelModeId), travelCategoryId INTEGER REFERENCES travelCategoryMst(travelCategoryId), cityTownId INTEGER REFERENCES cityTownMst(cityTownId),tsExpAttachment BLOB)");
-		t.executeSql("CREATE TABLE IF NOT EXISTS travelRequestDetails (travelRequestId INTEGER PRIMARY KEY ASC, travelRequestNo TEXT,title TEXT, accountHeadId INTEGER,travelStartDate DATE,travelEndDate DATE,travelDomOrInter CHAR(1))");
-        t.executeSql("CREATE TABLE IF NOT EXISTS accountHeadEAMst (accountHeadId INTEGER PRIMARY KEY ASC, accHeadName TEXT)");
-        t.executeSql("CREATE TABLE IF NOT EXISTS advanceType (advancetypeID INTEGER PRIMARY KEY ASC, advancetype TEXT)");
-        t.executeSql("CREATE TABLE IF NOT EXISTS employeeAdvanceDetails (empAdvID INTEGER PRIMARY KEY ASC, emplAdvVoucherNo TEXT,empAdvTitle TEXT,Amount Double)");
-        t.executeSql("CREATE TABLE IF NOT EXISTS currencyConversionMst (currencyCovId INTEGER PRIMARY KEY ASC, currencyId INTEGER REFERENCES currencyMst(currencyId), defaultcurrencyId INTEGER ,conversionRate Double)");
+		t.executeSql("CREATE TABLE IF NOT EXISTS userDetails (userid INTEGER PRIMARY KEY ASC, firstName TEXT, lastName TEXT, status CHAR(1),phoneNo TEXT , addressLine1 TEXT, addressLine2 TEXT, city TEXT, state TEXT, pinCode TEXT, userStatus TEXT)");
+		t.executeSql("CREATE TABLE IF NOT EXISTS inactiveUsers (inactiveUsersId INTEGER PRIMARY KEY ASC, firstName TEXT, lastName TEXT, userid INTEGER REFERENCES userDetails(userid)");
+		t.executeSql("CREATE TABLE IF NOT EXISTS activeUsers (activeUsersId INTEGER PRIMARY KEY ASC, firstName TEXT, lastName TEXT, userid INTEGER REFERENCES userDetails(userid)");
+		t.executeSql("CREATE TABLE IF NOT EXISTS patientTreatmentMst (Id INTEGER PRIMARY KEY ASC, treatmentProtocolId INTEGER REFERENCES treatmentProtocolMst(id), tratmentStatus TEXT, userid INTEGER REFERENCES userDetails(userid)");
+		t.executeSql("CREATE TABLE IF NOT EXISTS treatmentProtocolMst (Id INTEGER PRIMARY KEY ASC, treatmentProtocolCode TEXT, treatmentProtocolName TEXT , field1 TEXT, field2 TEXT, field3 TEXT, field4 TEXT, field5 TEXT");
     });
 } else {
     alert("WebSQL is not supported by your browser!");
