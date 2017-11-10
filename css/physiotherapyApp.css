@@ -203,7 +203,7 @@ body {
 }
 
 .about,.events-ls,.stats-agileits,.testimonials,.team,.gallery,.contact{
-  padding:6em 0em;
+  padding:3em 0em;
 }
 .title-main-ls {
     margin-bottom: 2.5em;
@@ -277,4 +277,204 @@ p.para-agileits-layouts {
 }
  .about-grids:nth-child(4) {
     background: #0cb8b6;
+}
+
+/*--appointment --*/
+.about-bottomr-agileits {
+    background: url(../images/darkbackground.jpg) no-repeat 0px 0px;
+    background-size: cover;
+    padding: 4em 4em;
+    position: relative;
+}
+.about-bottomr-agileits img {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 40%;
+}
+.appointment .timings-ls {
+    width: 35%;
+    float: left;
+    padding: 25px 40px!important;
+}
+.form-agileits input[type="text"], .form-agileits input[type="email"], select.form-control {
+    width: 100%;
+    float: left;
+    color: #999;
+    outline: none;
+    font-size: 14px;
+    padding: 10px 10px;
+  letter-spacing: 1px;
+    border: none;
+    border-bottom:2px solid rgba(125, 125, 125, 0.36);
+    -webkit-appearance: none;
+    margin: .3em 0em 1em 0em;
+    font-family: 'Roboto', sans-serif;
+    background: transparent;
+}
+.form-agileits input[type="text"]:focus , .form-agileits input[type="email"]:focus , select.form-control:focus {
+    border-color: rgba(12, 184, 182, 0.27);
+}
+input.name,select.name {
+    margin-right: 12px!important;
+}
+input.address{
+  width:100%!important;
+}
+select.form-control {
+    outline: none;
+    border-radius: 0;
+    height: 42px;
+  box-shadow: none;
+  color: #999;
+}
+.form-agileits h6, .form-agileits .wthree-text span {
+    color: #fff;
+    font-size: 15px;
+    text-transform: capitalize;
+    letter-spacing: 2px;
+    font-weight: 400;
+    margin: 15px 0 6px;
+    font-family: 'Roboto', sans-serif;
+}
+.form-agileits input[type="submit"] {
+    color: #fff;
+    border: none;
+    outline: none;
+    padding: 10px 48px;
+    margin-top: 2em;
+    font-size: 13px;
+    background: transparent;
+    border: 2px solid #f36438;
+    transition: 0.5s all;
+    -webkit-transition: 0.5s all;
+    -o-transition: 0.5s all;
+    -moz-transition: 0.5s all;
+    -ms-transition: 0.5s all;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+.form-agileits input[type="submit"]:hover {
+    background: #f36438;
+  color:#fff;
+  border-color:#fff;
+  transition: 0.5s all;
+    -webkit-transition: 0.5s all;
+    -o-transition: 0.5s all;
+    -moz-transition: 0.5s all;
+    -ms-transition: 0.5s all; 
+}
+.form-control:focus {
+    border-color: #f36438;
+    outline: 0;
+    box-shadow: none;
+}
+option {
+    background: #000;
+  color:#fff;
+}
+.ui-datepicker .ui-datepicker-header {
+    background: #f36438;
+}
+.ls-location {
+    background: url(../images/location.jpg) no-repeat 0px 0px;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    -moz-background-size: cover;
+    min-height: 158px;
+    width: 35%;
+    float: left;
+    margin-left: 21px;
+    margin-top: 18px;
+}
+.ls-location a {
+    text-decoration: none;
+    display: inline-block;
+    color: #f36438;
+    font-weight: bold;
+    font-size: 17px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 10px 20px;
+    background: rgba(0, 0, 0, 0.8);
+    margin: 59px 0px 0 137px;
+}
+/*-- //appointment --*/
+@media(max-width:414px){
+  .navbar-header h1 a {
+    left: 29.5%;
+  }
+  .about-bottoml-agileits {
+    min-height: 355px;
+  }
+  .about-bottomr-agileits {
+    padding: 2.5em 2em;
+  }
+  .address-info-ls {
+    width: 100%;
+    float: none;
+  }
+  .address-info-ls:nth-child(2) {
+    float: none;
+  }
+  .address-info-ls:nth-child(2) ul.address-inner li:nth-child(1):before{
+    content: "";
+    width: 67%;
+    height: 2px;
+    display: block;
+    background: #fff;
+    position: absolute;
+    top: 0;
+    left: 18%;
+  }
+  .contact-agileits-inner {
+    margin: 0em 1em 0!important;
+  }
+  .agileinfo_footer_bottom1 {
+    padding: 0 1em;
+  }
+  
+  .callbacks_nav.next {
+    right: -3.9%;
+  }
+  .callbacks_nav.prev {
+    left: -3.9%;
+  }
+  .about-bottomr-agileits {
+    background: url(../images/darkbackground.jpg) no-repeat -398px 0px;
+    background-size: cover;
+  }
+}
+
+.green-ls{
+  color:#0cb8b6!important;
+}
+about-bottomr-agileits h3.title-w3-agile:after,.about-bottomr-agileits h3.title-w3-agile:before {
+    display:none!important;
+}
+.about-bottoml-agileits {
+    background: url(../images/about.jpg) no-repeat 0px 0px;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -o-background-size: cover;
+    -moz-background-size: cover;
+    -ms-background-size: cover;
+    min-height: 521px;
+}
+.about-right-w3-agileits h2 {
+    font-size: 22px!important;
+    letter-spacing: 9px!important;
+    text-shadow: 1px 1px 3px #8e8e8e;
+    color: #f36438!important;
+    margin-bottom: 0.7em!important;
+}
+.about-right-w3-agileits {
+    text-align: center;
+    margin: 0 auto;
+    float: none;
+}
+.white-agileits{
+  color:#fff!important;
 }

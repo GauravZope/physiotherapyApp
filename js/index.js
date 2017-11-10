@@ -39,12 +39,10 @@ function login()
 
 
  }
-  function goBack() {
-  	alert("1")
-  }
 
- function openSideMenu() {
-  	alert("123")
+
+ function toggleSideMenu() {
+  	 j("#wrapper").toggleClass("toggled");
   }
   
 
@@ -61,22 +59,25 @@ function login()
 		}
 
 	}else{
-		headerBackBtn=defaultPagePath+'welcomePage.html';
+		headerBackBtn=defaultPagePath+'headerPage.html';
 		pgRef=defaultPagePath+'loginPage.html';
 	}
 
 	
 	j(document).ready(function() {
-		j('#mainHeader').load(headerBackBtn);
+			j('#header').load(headerBackBtn);
 			j('#mainContainer').load(pgRef);
 			
-			j('#mainContainer').on( "swipeleft", openSideMenu );
+			//j('#mainContainer').on( "swipeleft", openSideMenu );
 			j('#mainContainer').swipe({
 				swipe:function(event,direction,distance,duration,fingercount){
 					switch (direction) {
 						case "right":
-								goBack();
+								toggleSideMenu();
 								break;
+						/*case "left":
+								toggleSideMenu();
+								break;*/
 						default:
 
 					}
@@ -84,7 +85,25 @@ function login()
 				 threshold:200,
 				allowPageScroll:"auto"
 			});
+
+
 	});
 	appPageHistory.push(pgRef);
  }
  
+ function goToHomePage(){
+ 	//headerBackBtn=defaultPagePath+'headerPage.html';
+ 	pgRef=defaultPagePath+'homePage.html';
+	j('#mainContainer').load(pgRef);
+	//j('#header').load(headerBackBtn);
+	 j("#wrapper").toggleClass("toggled");
+	appPageHistory.push(pgRef);
+ }
+ function goToAppointmentPage(){
+ 	//headerBackBtn=defaultPagePath+'headerPage.html';
+ 	pgRef=defaultPagePath+'makeAppointmentPage.html';
+	j('#mainContainer').load(pgRef);
+	//j('#header').load(headerBackBtn);
+	 j("#wrapper").toggleClass("toggled");
+	appPageHistory.push(pgRef);
+ }

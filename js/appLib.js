@@ -31,6 +31,7 @@ var app = {
   //Local Database Create,Save,Display
 
   //Test for browser compatibility
+
 if (window.openDatabase) {
 	
 	//Create the database the parameters are 1. the database name 2.version number 3. a description 4. the size of the database (in bytes) 1024 x 1024 = 1MB
@@ -38,10 +39,10 @@ if (window.openDatabase) {
 	//create All tables using SQL for the database using a transaction
 	mydb.transaction(function (t) {
 		t.executeSql("CREATE TABLE IF NOT EXISTS userDetails (userid INTEGER PRIMARY KEY ASC, firstName TEXT, lastName TEXT, status CHAR(1),phoneNo TEXT , addressLine1 TEXT, addressLine2 TEXT, city TEXT, state TEXT, pinCode TEXT, userStatus TEXT)");
-		t.executeSql("CREATE TABLE IF NOT EXISTS inactiveUsers (inactiveUsersId INTEGER PRIMARY KEY ASC, firstName TEXT, lastName TEXT, userid INTEGER REFERENCES userDetails(userid)");
-		t.executeSql("CREATE TABLE IF NOT EXISTS activeUsers (activeUsersId INTEGER PRIMARY KEY ASC, firstName TEXT, lastName TEXT, userid INTEGER REFERENCES userDetails(userid)");
-		t.executeSql("CREATE TABLE IF NOT EXISTS patientTreatmentMst (Id INTEGER PRIMARY KEY ASC, treatmentProtocolId INTEGER REFERENCES treatmentProtocolMst(id), tratmentStatus TEXT, userid INTEGER REFERENCES userDetails(userid)");
-		t.executeSql("CREATE TABLE IF NOT EXISTS treatmentProtocolMst (Id INTEGER PRIMARY KEY ASC, treatmentProtocolCode TEXT, treatmentProtocolName TEXT , field1 TEXT, field2 TEXT, field3 TEXT, field4 TEXT, field5 TEXT");
+		t.executeSql("CREATE TABLE IF NOT EXISTS inactiveUsers (inactiveUsersId INTEGER PRIMARY KEY ASC, firstName TEXT, lastName TEXT, userid INTEGER REFERENCES userDetails(userid))");
+		t.executeSql("CREATE TABLE IF NOT EXISTS activeUsers (activeUsersId INTEGER PRIMARY KEY ASC, firstName TEXT, lastName TEXT, userid INTEGER REFERENCES userDetails(userid))");
+		t.executeSql("CREATE TABLE IF NOT EXISTS patientTreatmentMst (Id INTEGER PRIMARY KEY ASC, treatmentProtocolId INTEGER REFERENCES treatmentProtocolMst(id), tratmentStatus TEXT, userid INTEGER REFERENCES userDetails(userid))");
+		t.executeSql("CREATE TABLE IF NOT EXISTS treatmentProtocolMst (Id INTEGER PRIMARY KEY ASC, treatmentProtocolCode TEXT, treatmentProtocolName TEXT , field1 TEXT, field2 TEXT, field3 TEXT, field4 TEXT, field5 TEXT)");
     });
 } else {
     alert("WebSQL is not supported by your browser!");

@@ -1,0 +1,48 @@
+ <div id="sidebar-wrapper">
+  <ul class="sidebar-nav">
+      <li class="sidebar-brand">
+          <a href="#">
+              PhysioCare
+          </a>
+      </li>
+      <li>
+          <a onclick="goToHomePage();">Home</a>
+      </li>
+      <li>
+          <a href="#">Frozen Shoulder</a>
+      </li>
+      <li>
+          <a href="#">Muscle stretching</a>
+      </li>
+      <li>
+          <a href="#">Back Pain</a>
+      </li>
+      <li>
+          <a href="#">My Details</a>
+      </li>
+      <li>
+          <a onclick="goToAppointmentPage();">Make An Appointment</a>
+      </li>
+      <li>
+          <a href="#">Log Out</a>
+      </li>
+  </ul>
+</div>
+<div class="navbar navbar-app navbar-absolute-top">
+    <div class="navbar-brand navbar-brand-center">PhysioCare</div>
+    <div class="btn-group pull-left">
+      <a class="btn"  id="menu-toggle"><i class="fa fa-bars"></i> Menu</a>
+    </div>
+</div>
+
+<script type="text/javascript">
+  
+   j("#menu-toggle").click(function(e) {
+      if (j('#defaultOpen').length) {
+        document.getElementById("defaultOpen").click(); 
+        j('#defaultOpen').css('background-color', '#33cccc');
+      }
+        e.preventDefault();
+        j("#wrapper").toggleClass("toggled");
+    });
+</script>

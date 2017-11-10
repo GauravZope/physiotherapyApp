@@ -4959,7 +4959,7 @@ transition:transform .3s ease-out;
 .modal-body {
 	position:relative;
 	
-	padding-top: 75px !important
+	padding-top: 50px !important
 }
 .modal-footer {
 	padding:15px;
