@@ -91,19 +91,24 @@ function login()
 	appPageHistory.push(pgRef);
  }
  
- function goToHomePage(){
- 	//headerBackBtn=defaultPagePath+'headerPage.html';
+ function loadPage(id){
+ 	if(id == 'home'){
  	pgRef=defaultPagePath+'homePage.html';
-	j('#mainContainer').load(pgRef);
-	//j('#header').load(headerBackBtn);
-	 j("#wrapper").toggleClass("toggled");
-	appPageHistory.push(pgRef);
- }
- function goToAppointmentPage(){
- 	//headerBackBtn=defaultPagePath+'headerPage.html';
+ 	}else if(id == 'makeAppointment'){
  	pgRef=defaultPagePath+'makeAppointmentPage.html';
+ 	}else if(id == 'logout'){
+ 	pgRef=defaultPagePath+'logout.html';
+ 	}else if(id == 'myDetails'){
+ 	pgRef=defaultPagePath+'myDetails.html';
+ 	}else{
+ 		pgRef=defaultPagePath+'loginPage.html';
+ 	}
 	j('#mainContainer').load(pgRef);
-	//j('#header').load(headerBackBtn);
-	 j("#wrapper").toggleClass("toggled");
+	j("#wrapper").toggleClass("toggled");
 	appPageHistory.push(pgRef);
  }
+function logout(){
+	pgRef=defaultPagePath+'loginPage.html';
+	j('#mainContainer').load(pgRef);
+	appPageHistory.push(pgRef);
+}

@@ -242,6 +242,14 @@ h3.title-agile {
 h3.title-agile span {
     color: #0cb8b6;
 }
+.title-agile {
+    color: #000;
+    letter-spacing: 3px;
+    text-transform: capitalize;
+}
+.title-agile span {
+    color: #0cb8b6;
+}
 .about-right-agileits {
     text-align: center;
     margin: 0 auto;
@@ -281,8 +289,6 @@ p.para-agileits-layouts {
 
 /*--appointment --*/
 .about-bottomr-agileits {
-    background: url(../images/darkbackground.jpg) no-repeat 0px 0px;
-    background-size: cover;
     padding: 4em 4em;
     position: relative;
 }
@@ -300,7 +306,7 @@ p.para-agileits-layouts {
 .form-agileits input[type="text"], .form-agileits input[type="email"], select.form-control {
     width: 100%;
     float: left;
-    color: #999;
+    color: #000000;
     outline: none;
     font-size: 14px;
     padding: 10px 10px;
@@ -326,11 +332,11 @@ select.form-control {
     border-radius: 0;
     height: 42px;
   box-shadow: none;
-  color: #999;
+  color: #000;
 }
 .form-agileits h6, .form-agileits .wthree-text span {
-    color: #fff;
-    font-size: 15px;
+    color: #000010 !important;
+    font-size: 1.5em;
     text-transform: capitalize;
     letter-spacing: 2px;
     font-weight: 400;
@@ -338,7 +344,7 @@ select.form-control {
     font-family: 'Roboto', sans-serif;
 }
 .form-agileits input[type="submit"] {
-    color: #fff;
+    color: #000;
     border: none;
     outline: none;
     padding: 10px 48px;
@@ -356,7 +362,7 @@ select.form-control {
 }
 .form-agileits input[type="submit"]:hover {
     background: #f36438;
-  color:#fff;
+  color:#33cccc;
   border-color:#fff;
   transition: 0.5s all;
     -webkit-transition: 0.5s all;
@@ -443,7 +449,6 @@ option {
     left: -3.9%;
   }
   .about-bottomr-agileits {
-    background: url(../images/darkbackground.jpg) no-repeat -398px 0px;
     background-size: cover;
   }
 }
@@ -478,3 +483,77 @@ about-bottomr-agileits h3.title-w3-agile:after,.about-bottomr-agileits h3.title-
 .white-agileits{
   color:#fff!important;
 }
+
+
+input[type="text"], 
+input[type="password"], 
+textarea, 
+textarea.form-control {
+  height: 50px;
+    margin: 0;
+    padding: 0 20px;
+    vertical-align: middle;    background: #ffffff;
+    border: 1px solid #656363;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 50px;
+    color: #888;
+    -moz-border-radius: 4px; -webkit-border-radius: 4px; border-radius: 4px;
+    -moz-box-shadow: none; -webkit-box-shadow: none; box-shadow: none;
+    -o-transition: all .3s; -moz-transition: all .3s; -webkit-transition: all .3s; -ms-transition: all .3s; transition: all .3s;
+}
+
+textarea, 
+textarea.form-control {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  line-height: 30px;
+}
+
+input[type="text"]:focus, 
+input[type="password"]:focus, 
+textarea:focus, 
+textarea.form-control:focus {
+  outline: 0;
+  background: #fff;
+    border: 2px solid #656363;
+    -moz-box-shadow: none; -webkit-box-shadow: none; box-shadow: none;
+}
+
+input[type="text"]:-moz-placeholder, input[type="password"]:-moz-placeholder, 
+textarea:-moz-placeholder, textarea.form-control:-moz-placeholder {}
+
+input[type="text"]:-ms-input-placeholder, input[type="password"]:-ms-input-placeholder, 
+textarea:-ms-input-placeholder, textarea.form-control:-ms-input-placeholder {}
+
+input[type="text"]::-webkit-input-placeholder, input[type="password"]::-webkit-input-placeholder, 
+textarea::-webkit-input-placeholder, textarea.form-control::-webkit-input-placeholder {}
+
+
+
+button.btn {
+  height: 50px;
+    margin: 0;
+    padding: 0 20px;
+    vertical-align: middle;
+    background: #19b9e7;
+    border: 0;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 50px;
+    color: #fff;
+    -moz-border-radius: 4px; -webkit-border-radius: 4px; border-radius: 4px;
+    text-shadow: none;
+    -moz-box-shadow: none; -webkit-box-shadow: none; box-shadow: none;
+    -o-transition: all .3s; -moz-transition: all .3s; -webkit-transition: all .3s; -ms-transition: all .3s; transition: all .3s;
+}
+
+button.btn:hover { opacity: 0.6; color: #fff; }
+
+button.btn:active { outline: 0; opacity: 0.6; color: #fff; -moz-box-shadow: none; -webkit-box-shadow: none; box-shadow: none; }
+
+button.btn:focus { outline: 0; opacity: 0.6; background: #19b9e7; color: #fff; }
+
+button.btn:active:focus, button.btn.active:focus { outline: 0; opacity: 0.6; background: #19b9e7; color: #fff; }
