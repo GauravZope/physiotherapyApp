@@ -74,12 +74,12 @@
 var currentMonth;
 var currentDate;
 var currentYear;
-		 $(function() { 
+		 j(function() { 
 		var date = new Date();
 		 currentMonth = date.getMonth();
 		 currentDate = date.getDate();
 		 currentYear = date.getFullYear();
-		$('#expDate').datepicker({
+		j('#expDate').datepicker({
 		maxDate: new Date(currentYear, currentMonth, currentDate)
 		});
 	});

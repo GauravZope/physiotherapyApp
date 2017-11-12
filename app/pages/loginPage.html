@@ -7,7 +7,7 @@
     <div class="top-content" id="top-part">
     	<p class="logoplace"><img align="center" style="max-width: 60%" src="img/icon.png"><img align="center" src="img/logo.png"></p>
             <div class="container">
-            <div class="col-sm-5" >
+            <div class="col-sm-12" >
             	<div>
         			<button class="tablink" onclick="openTab('loginModule', this)" id="defaultOpen">Login</button>
                     <button class="tablink" onclick="openTab('registerModule', this)">Register</button>
@@ -23,33 +23,81 @@
                     </div>
                     <button class="btn" onclick="login();">Sign in</button>
                 </div>
-            
+ <!-- ------------------------------------------------Registration------------------------------------------------------ -->           
                 <div class="form-bottom tabcontent" id="registerModule">
+                  <div class="form-group">
+                        <label class="sr-only" for="form-casePaperNo">Case Paper No</label>
+                        <input type="text" name="form-casePaperNo" placeholder="Case Paper No..." class="form-control" id="form_casePaperNo">
+                    </div>
+                  <table>
+                    <tr>
+                        <td>
                 	<div class="form-group">
                 		<label class="sr-only" for="form-first-name">First name</label>
-                    	<input type="text" name="form-first-name" placeholder="First name..." class="form-first-name form-control" id="form-first-name">
-                    </div>
-                    <div class="form-group">
+                    	<input type="text" name="form-first-name" placeholder="First name..." class="form-control" id="form_first_name">
+                    </div></td>
+                    <td><div style="width: 10px"></div></td>
+                   <td> <div class="form-group">
                     	<label class="sr-only" for="form-last-name">Last name</label>
-                    	<input type="text" name="form-last-name" placeholder="Last name..." class="form-last-name form-control" id="form-last-name">
+                    	<input type="text" name="form-last-name" placeholder="Last name..." class="form-control" id="form_last_name"> </div></td>
+                   
+                    </tr>
+                </table>
+                <div class="form-group">
+                        <label class="sr-only" for="form-phoneNo">Phone No</label>
+                        <input type="text" name="form-phoneNo" placeholder="Phone No..." class="form-control" id="form_phoneNo">
                     </div>
                     <div class="form-group">
                     	<label class="sr-only" for="form-email">Email</label>
-                    	<input type="text" name="form-email" placeholder="Email..." class="form-email form-control" id="form-email">
+                    	<input type="text" name="form-email" placeholder="Email..." class="form-control" id="form_email">
                     </div>
                     <div class="form-group">
+                        <label class="sr-only" for="form-AddressLine1">Address Line 1</label>
+                        <input type="text" name="form-AddressLine1" placeholder="Address Line 1..." class="form-control" id="form_AddressLine1">
+                    </div>
+                     <div class="form-group">
+                        <label class="sr-only" for="form-AddressLine2">Address Line 2</label>
+                        <input type="text" name="   " placeholder="Address Line 2..." class="form-control" id="form_AddressLine2">
+                    </div>
+                   <table>
+                    <tr>
+                    <td>
+                        <div class="form-group">
+                            <label class="sr-only" for="form-City">City</label>
+                            <input type="text" name="form-City" placeholder="City..." class="form-control" id="form_City">
+                        </div>
+                    </td> <td><div style="width: 10px"></div></td>
+                    <td>
+                         <div class="form-group">
+                            <label class="sr-only" for="form-State">State</label>
+                            <input type="text" name="form-State" placeholder="State..." class="form-control" id="form_State">
+                         </div>
+                    </td> <td><div style="width: 10px"></div></td>
+                    <td>
+                         <div class="form-group">
+                            <label class="sr-only" for="form-pincode">pincode</label>
+                            <input type="text" name="form-pincode" placeholder="pincode..." class="form-control" id="form_pincode">
+                         </div>
+                    </td>
+                   </tr>
+                </table>
+                    <div class="form-group">
                         <label class="sr-only" for="form-password">Password</label>
-                        <input type="password" name="form-password" placeholder="Password..." class="form-password form-control" id="form-password">
+                        <input type="password" name="form-password" placeholder="Password..." class="form-control" id="form_password">
                     </div>
                     <div class="form-group">
                         <label class="sr-only" for="form-RetypePassword">Retype Password</label>
-                        <input type="password" name="form-RetypePassword" placeholder="Retype Password..." class="form-password form-control" id="form-RetypePassword">
+                        <input type="password" name="form-RetypePassword" placeholder="Retype Password..." class="form-control" id="form_RetypePassword">
                     </div>
-
+                    
                     <button  class="btn" onclick="signMeUp();">Sign me up!</button>
                 </div>
         	</div>
+            <div style="display:none" id="loading_Cat" >
+                  <img src="images/loading2.gif" id="loading-image_Cat" alt="Loading..." >
+           </div>
         </div>
+         <div  style="display:none" id="syncSuccessMsg" class="displaysynctext">   </div>
     </div>
             
 <style type="text/css">
@@ -85,13 +133,13 @@
 <script type="text/javascript">
     
    
-    $("#registerHereId").click(function() {
-    	$("#registerModule").toggle();
-    	$("#loginModule").toggle();
+    j("#registerHereId").click(function() {
+    	j("#registerModule").toggle();
+    	j("#loginModule").toggle();
 	});
-	$("#loginId").click(function() {
-    	$("#registerModule").toggle();
-    	$("#loginModule").toggle();
+	j("#loginId").click(function() {
+    	j("#registerModule").toggle();
+    	j("#loginModule").toggle();
 	});
     
     function openTab(tabName, elmnt) {

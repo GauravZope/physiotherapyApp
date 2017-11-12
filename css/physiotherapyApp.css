@@ -522,15 +522,16 @@ textarea.form-control:focus {
 }
 
 input[type="text"]:-moz-placeholder, input[type="password"]:-moz-placeholder, 
-textarea:-moz-placeholder, textarea.form-control:-moz-placeholder {}
+textarea:-moz-placeholder, textarea.form-control:-moz-placeholder { color: #000; }
 
 input[type="text"]:-ms-input-placeholder, input[type="password"]:-ms-input-placeholder, 
-textarea:-ms-input-placeholder, textarea.form-control:-ms-input-placeholder {}
+textarea:-ms-input-placeholder, textarea.form-control:-ms-input-placeholder { color: #000; }
 
 input[type="text"]::-webkit-input-placeholder, input[type="password"]::-webkit-input-placeholder, 
-textarea::-webkit-input-placeholder, textarea.form-control::-webkit-input-placeholder {}
+textarea::-webkit-input-placeholder, textarea.form-control::-webkit-input-placeholder { color: #000; }
 
 
+form-agileits input[type="text"]:-moz-placeholder, form-agileits input[type="email"]:-moz-placeholder { color: #000; }
 
 button.btn {
   height: 50px;
@@ -557,3 +558,73 @@ button.btn:active { outline: 0; opacity: 0.6; color: #fff; -moz-box-shadow: none
 button.btn:focus { outline: 0; opacity: 0.6; background: #19b9e7; color: #fff; }
 
 button.btn:active:focus, button.btn.active:focus { outline: 0; opacity: 0.6; background: #19b9e7; color: #fff; }
+
+
+form-agileits input[type="text"]:-moz-placeholder, form-agileits input[type="email"]:-moz-placeholder { color: #000; }
+form-agileits input[type="text"]:-ms-input-placeholder,form-agileits input[type="email"]:-ms-input-placeholder { color: #000; }
+
+form-agileits input[type="text"]:-webkit-input-placeholder, form-agileits input[type="email"]:-webkit-input-placeholder { color: #000; }
+
+
+
+/*-- banner-bottom --*/
+.banner-bottom {
+    padding: 2em ;
+    background: #eee;
+}
+.bnr-btm-grids-agileits {
+    width: -webkit-fill-available;
+    float: left;
+  padding-bottom: 10px;
+}
+.bnr-btm-icon {
+    float: left;
+}
+.bnr-btm-icon i {
+    color: #3f51b5;
+    font-size: 25px;
+}
+.bnr-btm-info {
+    position: relative;
+    float: center;
+    padding-left: 19px;
+}
+.bnr-btm-info:before{
+    content: "";
+    width: 150px;
+    height: 2px;
+    background: #fe4630;
+    display: block;
+    bottom: -10px;
+    left: 18px;
+    position: absolute;
+}
+.bnr-btm-info h3 {
+    color: #000;
+    font-size: 19px;
+    letter-spacing: .3px;
+}
+.bnr-btm-info p {
+    color: #777;
+    font-size: 16px;
+    padding-top: 4px;
+}
+.bnr-btm-info p a {
+    color: #777;
+    font-size: 16px;
+  text-decoration:none;
+}
+@media (max-width: 370px){
+  .bnr-btm-grids-agileits {
+      width: 96%;
+  }
+}
+@media (max-width: 768px)
+{
+  .bnr-btm-grids-agileits {
+       width: -webkit-fill-available;
+      float: none;
+      margin: 0 auto 1.5em;
+  }
+}
+/*-- //banner-bottom --*/
