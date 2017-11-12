@@ -85,12 +85,6 @@ function setUserSessionDetails(firstName,lastName,userName,password,emailid,addr
 	
 }
 
-function setUserStatusInLocalStorage(status){
-	window.localStorage.setItem("UserStatus",status);
-}
-function setUrlPathLocalStorage(url){
-	window.localStorage.setItem("urlPath",url);
-}
 function dropAllTableDetails(){
 
 	mydb.transaction(function(t) {
@@ -98,15 +92,6 @@ function dropAllTableDetails(){
 		t.executeSql("DELETE TABLE accountHeadMst ");
 		t.executeSql("DELETE TABLE expNameMst");
 		t.executeSql("DELETE TABLE businessExpDetails");
-		t.executeSql("DELETE TABLE walletMst");
-		t.executeSql("DELETE TABLE travelModeMst");
-		t.executeSql("DELETE TABLE travelCategoryMst ");
-		t.executeSql("DELETE TABLE cityTownMst");
-		t.executeSql("DELETE TABLE travelTypeMst");
-		t.executeSql("DELETE TABLE travelAccountHeadMst");
-		t.executeSql("DELETE TABLE travelExpenseNameMst");
-		t.executeSql("DELETE TABLE travelSettleExpDetails");
-		t.executeSql("DELETE TABLE travelRequestDetails");
 	 });
 
 }
@@ -115,18 +100,6 @@ function getUserID() {
 	userKey=window.localStorage.getItem("EmployeeId");
 	if(userKey==null) return  "";
 	else return userKey;
-}
-
-function getCurrencyDBTravel(travelRequestId){
- if (mydb) {
-	      //Get all the employeeDetails from the database with a select statement, set outputEmployeeDetails as the callback function for the executeSql command
-        mydb.transaction(function (t) {
-        t.executeSql("select travelDomOrInter from travelRequestDetails where travelRequestId="+travelRequestId, [],fetchTravelDomOrInterDate);
-        	
-			});
-    } else {
-        alert("db not found, your browser does not support web sql!");
-    }	
 }
 
 function saveRegistrationForm(){
@@ -164,7 +137,7 @@ function getUserDetails(userName , password) {
 				t.executeSql("SELECT * FROM userDetails where emailid = '"+userName+"'", [], validateUserCredentials);
 			});
 		
-		if(setTimeout(validatePassword(password), 1000)){
+		if(setTimeout(validatePassword, 1000)){
 			return true;
 		}else{
 			resetUserSessionDetails();
@@ -175,10 +148,8 @@ function getUserDetails(userName , password) {
 	}
  }
  function validatePassword(password ){
-		var dbPassword = window.localStorage.getItem("Password");
-		console.log("dbPassword   "+dbPassword)
- 	console.log("in validatePassword")
-	if(dbPassword == password){
+	var dbPassword = window.localStorage.getItem("Password");
+	if( (dbPassword != '' || dbPassword != null) &&  dbPassword == password){
 			return true;
 		}else{
 			resetUserSessionDetails();
@@ -186,27 +157,26 @@ function getUserDetails(userName , password) {
 		}	
  }
  function validateUserCredentials(transaction, results) {	
- 	console.log("inside of validateUserCredentials")
-    var row = results.rows.item(0);
     if(results.rows.length <= 0){
     	alert("Invalid credentials")
     } else{
-	var casePaperNo  = row.casePaperNo ;
-	var formFirst_name  = row.firstName ; 
-	var formLast_name  = row.lastName ;
-	var formEmail  = row.emailid ; 
-	var formAddressLine2  = row.status ; 
-	var formPhoneNo  = row.phoneNo  ;
-	var formAddressLine1  = row.addressLine1 ; 
-	var formAddressLine2  = row.addressLine2 ;
-	var formAddressLine2  = row.city ;
-	var formState  = row.state ; 
-	var formPincode  = row.pinCode ;
-	var formPassword  = row.userPassword;
-	var userStatus = row.userStatus;
-	setUserSessionDetails(formFirst_name,formLast_name,formEmail,
-						formPassword,formEmail,
-						""+formAddressLine1+" "+formAddressLine2+" "+formPincode,
-						formPhoneNo,formState,formPincode,casePaperNo);
+	    var row = results.rows.item(0);
+		var casePaperNo  = row.casePaperNo ;
+		var formFirst_name  = row.firstName ; 
+		var formLast_name  = row.lastName ;
+		var formEmail  = row.emailid ; 
+		var formAddressLine2  = row.status ; 
+		var formPhoneNo  = row.phoneNo  ;
+		var formAddressLine1  = row.addressLine1 ; 
+		var formAddressLine2  = row.addressLine2 ;
+		var formAddressLine2  = row.city ;
+		var formState  = row.state ; 
+		var formPincode  = row.pinCode ;
+		var formPassword  = row.userPassword;
+		var userStatus = row.userStatus;
+		setUserSessionDetails(formFirst_name,formLast_name,formEmail,
+							formPassword,formEmail,
+							""+formAddressLine1+" "+formAddressLine2+" "+formPincode,
+							formPhoneNo,formState,formPincode,casePaperNo);
 	}
 }	 

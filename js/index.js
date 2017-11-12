@@ -11,40 +11,11 @@ function loaded() {
                 pictureSource=navigator.camera.PictureSourceType;
                 destinationType=navigator.camera.DestinationType;
             }
-function login()
-   {
-   	if(document.getElementById("userName")!=null){
-    	var userName = document.getElementById("userName").value;
-	}else if(document.getElementById("userName")!=null){
-		var userName = document.getElementById("userNameId").value;
-	}
-	var password = document.getElementById("password");
-    
-	var pageRef=defaultPagePath+'homePage.html';
-
-	j('#loading').show();
-   if(userName == 'yashashreezope'){
-   		alert("Hello Dr. yashashree Zope. \n  Welcome to Your Physiotheropy App");
-				j('#mainHeader').load(headerBackBtn);
-				j('#mainContainer').load(pageRef);
-      appPageHistory.push(pageRef);
-   }else if(userName == 'gauravzope'){
-		alert("Hello Mr. Gaurav Zope. \n  Welcome to Your Physiotheropy App");
-				j('#mainHeader').load(headerBackBtn);
-				j('#mainContainer').load(pageRef);
-      appPageHistory.push(pageRef);
-   }else{
-   		alert("Please follow registration process for new enrollment");
-   }
-
-
- }
 
 
  function toggleSideMenu() {
   	 j("#wrapper").toggleClass("toggled");
   }
-  
 
  function init() {
 	var pgRef;
@@ -109,6 +80,7 @@ function login()
 	appPageHistory.push(pgRef);
  }
 function logout(){
+	resetUserSessionDetails();
 	pgRef=defaultPagePath+'loginPage.html';
 	j('#mainContainer').load(pgRef);
 	appPageHistory.push(pgRef);
