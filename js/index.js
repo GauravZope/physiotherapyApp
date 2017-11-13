@@ -116,9 +116,10 @@ function signMeUp(){
 function validatePassword(password ){
  	var userPassword = document.getElementById('password').value;
 	var dbPassword = window.localStorage.getItem("Password").trim();
+	var userName = document.getElementById('userName').value.toLowerCase().trim();
 	console.log("userPassword  "+userPassword+"   dbPassword    "+dbPassword)
 	if( (dbPassword != '' || dbPassword != null) &&  dbPassword == userPassword){
-			//window.plugins.toast.showShortTop("Welcome "+userName);
+			createShortToast("welcome "+userName);
 			pgRef=defaultPagePath+'homePage.html';
 			j('#mainContainer').load(pgRef);
 			appPageHistory.push(pgRef);
@@ -126,4 +127,12 @@ function validatePassword(password ){
 			resetUserSessionDetails();
 			alert("Oops something went wrong. Please try again later !!!");
 		}	
+ }
+
+ function createShortToast(msg){
+ 	if(device.platform == 'Android'){
+ 		window.plugins.toast.showShortTop(msg);
+ 	}else{
+ 		console.log(msg);
+ 	}
  }
