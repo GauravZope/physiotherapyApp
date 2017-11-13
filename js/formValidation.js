@@ -65,7 +65,7 @@ function validateRegisterForm(){
 		j('#form_RetypePassword').css('border-color', 'red');
 		isValidForm =  false;
 	}else{
-		j("#form_RetypePassword").removeAttr("border-color") 
+		j("#form_RetypePassword").removeAttr("border-color")
 	}
 
 		return isValidForm;

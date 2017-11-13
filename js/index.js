@@ -80,7 +80,7 @@ function loaded() {
 	appPageHistory.push(pgRef);
  }
 function logout(){
-	resetUserSessionDetails();
+	 window.localStorage.clear(); 
 	pgRef=defaultPagePath+'loginPage.html';
 	j('#mainContainer').load(pgRef);
 	appPageHistory.push(pgRef);
@@ -91,12 +91,12 @@ function login(){
 	var status = false;
 	var userName = document.getElementById('userName').value  ;
 	var userPassword = document.getElementById('password').value;
-		console.log(validateLoginForm())
 	if(validateLoginForm()){
 		console.log("inside og if")
 		status = getUserDetails(userName,userPassword);
 		console.log("status  "+status);
 		if(status){
+			window.plugins.toast.showShortTop("Welcome "+userName);
 			pgRef=defaultPagePath+'homePage.html';
 			j('#mainContainer').load(pgRef);
 			appPageHistory.push(pgRef);
@@ -110,15 +110,12 @@ function login(){
 }
 
 function signMeUp(){
-	console.log(validateRegisterForm());
 	if(validateRegisterForm()){
-		console.log("if")
 		saveRegistrationForm();
-
 		pgRef=defaultPagePath+'homePage.html';
 		j('#mainContainer').load(pgRef);
 		appPageHistory.push(pgRef);
     }else{
-    	console.log("invalid form........");
+
     }
 }

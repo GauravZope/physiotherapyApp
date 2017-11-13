@@ -169,14 +169,14 @@ function getUserDetails(userName , password) {
 		var formPhoneNo  = row.phoneNo  ;
 		var formAddressLine1  = row.addressLine1 ; 
 		var formAddressLine2  = row.addressLine2 ;
-		var formAddressLine2  = row.city ;
+		var formCity  = row.city ;
 		var formState  = row.state ; 
 		var formPincode  = row.pinCode ;
 		var formPassword  = row.userPassword;
 		var userStatus = row.userStatus;
 		setUserSessionDetails(formFirst_name,formLast_name,formEmail,
 							formPassword,formEmail,
-							""+formAddressLine1+" "+formAddressLine2+" "+formPincode,
+							""+formAddressLine1+" "+formAddressLine2+" "+formCity,
 							formPhoneNo,formState,formPincode,casePaperNo);
 	}
 }	 

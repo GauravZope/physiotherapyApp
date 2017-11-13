@@ -11,12 +11,12 @@
   	<h2 id="PhoneNo" ></h2>
 </div>
 <script type="text/javascript">
-	document.getElementById('fullName').innerHTML = "successMessage";
-document.getElementById('emailid').innerHTML = "gauravzope@gmail.com";
-document.getElementById('address').innerHTML = "gaurav Bldg , Plot No 11, Gat no 33 , Muktai nagar";
-document.getElementById('state').innerHTML = "Jalgaon, Maharashtra";
-document.getElementById('PhoneNo').innerHTML = "+91-9823980034";
-document.getElementById('pincode').innerHTML = "425001";
+	document.getElementById('fullName').innerHTML = ""+window.localStorage.getItem("FirstName") + "                                            " +window.localStorage.getItem("LastName") ;
+document.getElementById('emailid').innerHTML = window.localStorage.getItem("EmailId");
+document.getElementById('address').innerHTML = window.localStorage.getItem("Address") ;
+document.getElementById('state').innerHTML = window.localStorage.getItem("State");
+document.getElementById('PhoneNo').innerHTML = window.localStorage.getItem("PhoneNo");
+document.getElementById('pincode').innerHTML = window.localStorage.getItem("PinCode");
 
 </script>
 <style type="text/css">
