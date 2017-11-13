@@ -116,7 +116,7 @@ function saveRegistrationForm(){
 	var formPassword = document.getElementById('form_password').value.trim();
 	var formRetypePassword = document.getElementById('form_RetypePassword').value;
 	var formAddressLine1 = document.getElementById('form_AddressLine1').value;
-	var formAddressLine2 = document.getElementById('form_AddressLine1').value;
+	var formAddressLine2 = document.getElementById('form_AddressLine2').value;
     j('#loading_Cat').show();
 	if(mydb){
 		 mydb.transaction(function (t) {
@@ -125,9 +125,10 @@ function saveRegistrationForm(){
 
 		});
 	}
-	j('#loading_Cat').hide();
-	document.getElementById("syncSuccessMsg").innerHTML = "Expenses added successfully.";
-	j('#syncSuccessMsg').hide().fadeIn('slow').delay(500).fadeOut('slow');
+	setUserSessionDetails(formFirst_name,formLast_name,formEmail,
+							formPassword,formEmail,
+							""+formAddressLine1+" "+formAddressLine2+" "+formCity,
+							formPhoneNo,formState,formPincode,formCasePaperNo);
 }
 
 

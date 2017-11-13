@@ -21,42 +21,28 @@ function loaded() {
  function init() {
 	var pgRef;
 	var headerBackBtn;
-	if(window.localStorage.getItem("EmployeeId")!= null){
-		if(window.localStorage.getItem("UserStatus")=='Valid'){
-			pgRef=defaultPagePath+'category.html';
-			headerBackBtn=defaultPagePath+'categoryMsgPage.html';
-		}else{
-			headerBackBtn=defaultPagePath+'welcomePage.html';
-			pgRef=defaultPagePath+'loginPage.html';
-		}
 
-	}else{
-		headerBackBtn=defaultPagePath+'headerPage.html';
-		pgRef=defaultPagePath+'loginPage.html';
-	}
+	headerBackBtn=defaultPagePath+'headerPage.html';
+	pgRef=defaultPagePath+'loginPage.html';
 
-	
 	j(document).ready(function() {
 			j('#header').load(headerBackBtn);
 			j('#mainContainer').load(pgRef);
 			
 			//j('#mainContainer').on( "swipeleft", openSideMenu );
-			j('#mainContainer').swipe({
+			/*j('#mainContainer').swipe({
 				swipe:function(event,direction,distance,duration,fingercount){
 					switch (direction) {
 						case "right":
 								toggleSideMenu();
 								break;
-						/*case "left":
-								toggleSideMenu();
-								break;*/
 						default:
 
 					}
 				},
 				 threshold:200,
 				allowPageScroll:"auto"
-			});
+			});*/
 
 
 	});
@@ -81,8 +67,9 @@ function loaded() {
 	appPageHistory.push(pgRef);
  }
 function logout(){
-	dropAllTableDetails();
+	//dropAllTableDetails();
 	resetUserSessionDetails();
+	createShortToast("You have successfully logged out of system!!!");
 	pgRef=defaultPagePath+'loginPage.html';
 	j('#mainContainer').load(pgRef);
 	appPageHistory.push(pgRef);
@@ -94,22 +81,22 @@ function login(){
 	var userName = document.getElementById('userName').value.toLowerCase().trim();
 	var userPassword = document.getElementById('password').value;
 	if(validateLoginForm()){
-		console.log("inside og if")
 		 getUserDetails(userName,userPassword);
 		setTimeout(validatePassword, 1000);
     }else{
-    	alert("Please enter user name and password.");
+    	createShortToast("Please enter user name and password.");
     }
 }
 
 function signMeUp(){
 	if(validateRegisterForm()){
 		saveRegistrationForm();
+		createShortToast("welcome "+userName);
 		pgRef=defaultPagePath+'homePage.html';
 		j('#mainContainer').load(pgRef);
 		appPageHistory.push(pgRef);
     }else{
-
+		createShortToast("Please enter valid credentials.")
     }
 }
 
@@ -117,7 +104,6 @@ function validatePassword(password ){
  	var userPassword = document.getElementById('password').value;
 	var dbPassword = window.localStorage.getItem("Password").trim();
 	var userName = document.getElementById('userName').value.toLowerCase().trim();
-	console.log("userPassword  "+userPassword+"   dbPassword    "+dbPassword)
 	if( (dbPassword != '' || dbPassword != null) &&  dbPassword == userPassword){
 			createShortToast("welcome "+userName);
 			pgRef=defaultPagePath+'homePage.html';
@@ -125,12 +111,13 @@ function validatePassword(password ){
 			appPageHistory.push(pgRef);
 		}else{
 			resetUserSessionDetails();
-			alert("Oops something went wrong. Please try again later !!!");
+			createShortToast("User Name and Password does not match. If you are new user please proceed with sign up procedure. ");
 		}	
  }
 
  function createShortToast(msg){
  	if(device.platform == 'Android'){
+ 	// if(true){
  		window.plugins.toast.showShortTop(msg);
  	}else{
  		console.log(msg);
