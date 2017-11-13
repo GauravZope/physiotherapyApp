@@ -43,12 +43,12 @@ if (window.openDatabase) {
 		t.executeSql("CREATE TABLE IF NOT EXISTS activeUsers (activeUsersId INTEGER PRIMARY KEY ASC, firstName TEXT, lastName TEXT, userid INTEGER REFERENCES userDetails(userid))");
 		t.executeSql("CREATE TABLE IF NOT EXISTS patientTreatmentMst (Id INTEGER PRIMARY KEY ASC, treatmentProtocolId INTEGER REFERENCES treatmentProtocolMst(id), tratmentStatus TEXT, userid INTEGER REFERENCES userDetails(userid))");
 		t.executeSql("CREATE TABLE IF NOT EXISTS treatmentProtocolMst (Id INTEGER PRIMARY KEY ASC, treatmentProtocolCode TEXT, treatmentProtocolName TEXT , field1 TEXT, field2 TEXT, field3 TEXT, field4 TEXT, field5 TEXT)");
-		
-		 mydb.transaction(function (t) {
+		mydb.transaction(function (t) {
 			t.executeSql("INSERT INTO userDetails (casePaperNo , firstName , lastName , emailid ,status ,phoneNo  , addressLine1 , addressLine2 , city , state , pinCode , userStatus ,userPassword) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)", 
-						["","John","Doe","johndoe@gmail.com",'1' ,"9876543210","403, Bakers st","","Mumbai","Maharashtra","400007",'D','123456']);	
+						["","John","Doe","johndoe@gmail.com",'1' ,"9876543210","403 Bakers st","","Mumbai","Maharashtra","400007",'D','123456']);	
 
 		});
+		 
     });
 } else {
     alert("WebSQL is not supported by your browser!");
@@ -71,6 +71,7 @@ function resetUserSessionDetails(){
 }
 
 function setUserSessionDetails(firstName,lastName,userName,password,emailid,addr,phNo,state,pincode,casePaperNo){
+	console.log(firstName,lastName,userName,password,emailid,addr,phNo,state,pincode,casePaperNo)
 	 window.localStorage.setItem("FirstName",firstName);
 	 window.localStorage.setItem("LastName",lastName);
 	 window.localStorage.setItem("UserName",userName);
@@ -88,10 +89,11 @@ function setUserSessionDetails(firstName,lastName,userName,password,emailid,addr
 function dropAllTableDetails(){
 
 	mydb.transaction(function(t) {
-		t.executeSql("DELETE TABLE currencyMst ");
-		t.executeSql("DELETE TABLE accountHeadMst ");
-		t.executeSql("DELETE TABLE expNameMst");
-		t.executeSql("DELETE TABLE businessExpDetails");
+		t.executeSql("DELETE TABLE userDetails ");
+		t.executeSql("DELETE TABLE inactiveUsers ");
+		t.executeSql("DELETE TABLE activeUsers");
+		t.executeSql("DELETE TABLE patientTreatmentMst");
+		t.executeSql("DELETE TABLE treatmentProtocolMst");
 	 });
 
 }
@@ -107,11 +109,11 @@ function saveRegistrationForm(){
 	var formFirst_name = document.getElementById('form_first_name').value;
 	var formLast_name = document.getElementById('form_last_name').value;
 	var formPhoneNo = document.getElementById('form_phoneNo').value;
-	var formEmail = document.getElementById('form_email').value;
+	var formEmail = document.getElementById('form_email').value.toLowerCase();
 	var formCity = document.getElementById('form_City').value;
 	var formState = document.getElementById('form_State').value;
 	var formPincode = document.getElementById('form_pincode').value;
-	var formPassword = document.getElementById('form_password').value;
+	var formPassword = document.getElementById('form_password').value.trim();
 	var formRetypePassword = document.getElementById('form_RetypePassword').value;
 	var formAddressLine1 = document.getElementById('form_AddressLine1').value;
 	var formAddressLine2 = document.getElementById('form_AddressLine1').value;
@@ -136,26 +138,17 @@ function getUserDetails(userName , password) {
 		mydb.transaction(function (t) {
 				t.executeSql("SELECT * FROM userDetails where emailid = '"+userName+"'", [], validateUserCredentials);
 			});
-		
-		if(setTimeout(validatePassword, 1000)){
+		/*if(setTimeout(validatePassword, 2000)){
 			return true;
 		}else{
 			resetUserSessionDetails();
 			return false;
-		}	
+		}	*/
 	} else {
 		alert("db not found, your browser does not support web sql!");
 	}
  }
- function validatePassword(password ){
-	var dbPassword = window.localStorage.getItem("Password");
-	if( (dbPassword != '' || dbPassword != null) &&  dbPassword == password){
-			return true;
-		}else{
-			resetUserSessionDetails();
-			return false;
-		}	
- }
+ 
  function validateUserCredentials(transaction, results) {	
     if(results.rows.length <= 0){
     	alert("Invalid credentials")
@@ -174,6 +167,7 @@ function getUserDetails(userName , password) {
 		var formPincode  = row.pinCode ;
 		var formPassword  = row.userPassword;
 		var userStatus = row.userStatus;
+		console.log("saving localStorage")
 		setUserSessionDetails(formFirst_name,formLast_name,formEmail,
 							formPassword,formEmail,
 							""+formAddressLine1+" "+formAddressLine2+" "+formCity,

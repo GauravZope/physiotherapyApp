@@ -10,6 +10,7 @@ document.addEventListener("deviceready",loaded,false);
 function loaded() {
                 pictureSource=navigator.camera.PictureSourceType;
                 destinationType=navigator.camera.DestinationType;
+                
             }
 
 
@@ -80,7 +81,8 @@ function loaded() {
 	appPageHistory.push(pgRef);
  }
 function logout(){
-	 window.localStorage.clear(); 
+	dropAllTableDetails();
+	resetUserSessionDetails();
 	pgRef=defaultPagePath+'loginPage.html';
 	j('#mainContainer').load(pgRef);
 	appPageHistory.push(pgRef);
@@ -89,21 +91,12 @@ function logout(){
 
 function login(){
 	var status = false;
-	var userName = document.getElementById('userName').value  ;
+	var userName = document.getElementById('userName').value.toLowerCase().trim();
 	var userPassword = document.getElementById('password').value;
 	if(validateLoginForm()){
 		console.log("inside og if")
-		status = getUserDetails(userName,userPassword);
-		console.log("status  "+status);
-		if(status){
-			window.plugins.toast.showShortTop("Welcome "+userName);
-			pgRef=defaultPagePath+'homePage.html';
-			j('#mainContainer').load(pgRef);
-			appPageHistory.push(pgRef);
-		}else{
-			
-			alert("Oops something went wrong. Please try again later !!!");
-		}
+		 getUserDetails(userName,userPassword);
+		setTimeout(validatePassword, 1000);
     }else{
     	alert("Please enter user name and password.");
     }
@@ -119,3 +112,18 @@ function signMeUp(){
 
     }
 }
+
+function validatePassword(password ){
+ 	var userPassword = document.getElementById('password').value;
+	var dbPassword = window.localStorage.getItem("Password").trim();
+	console.log("userPassword  "+userPassword+"   dbPassword    "+dbPassword)
+	if( (dbPassword != '' || dbPassword != null) &&  dbPassword == userPassword){
+			//window.plugins.toast.showShortTop("Welcome "+userName);
+			pgRef=defaultPagePath+'homePage.html';
+			j('#mainContainer').load(pgRef);
+			appPageHistory.push(pgRef);
+		}else{
+			resetUserSessionDetails();
+			alert("Oops something went wrong. Please try again later !!!");
+		}	
+ }
